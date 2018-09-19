@@ -1,0 +1,56 @@
+<div class="container-fluid mb-5" style="margin-top:5%;">
+  <div class="row mt-5" style="margin-bottom:5%;">
+    <div class="offset-md-2 col-md-8">
+      <div class="card">
+        <div class="card-header text-center">
+          <h2>Preguntas </h2>
+        </div>
+
+        <div class="card-body" style="padding:30px">
+
+          <form #questionsForm="ngForm" (ngSubmit)="onSubmit(questionsForm)">
+
+            <!--<input type="hidden" name="id" #id="ngModel" [(ngModel)]="category.id">-->
+            <div *ngFor="let pregunta of instintoService.preguntas">
+
+              <div class="form-group">
+                <h5>Pregunta: {{pregunta.id}}</h5>
+                <p>{{pregunta.pregunta}}</p>
+                <label for="puntos">Respuesta</label>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <input type="radio" name="puntos{{pregunta.id}}" value="0"
+                    [(ngModel)]="pregunta.puntaje">No Nunca
+                    <input class="ml-2" type="radio" name="puntos{{pregunta.id}}" value="1"
+                    required [(ngModel)]="pregunta.puntaje">Rara vez
+                    <input class="ml-2" type="radio" name="puntos{{pregunta.id}}" value="2"
+                    required [(ngModel)]="pregunta.puntaje">Alguna vez
+                    <input class="ml-2" type="radio" name="puntos{{pregunta.id}}" value="3"
+                    required [(ngModel)]="pregunta.puntaje">Varias veces
+                    <input class="ml-2" type="radio" name="puntos{{pregunta.id}}" value="4" required [(ngModel)]="pregunta.puntaje">Generalmente
+                    <input class="ml-2" type="radio" name="puntos{{pregunta.id}}" value="5" required [(ngModel)]="pregunta.puntaje">Muy Cierto!
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            Resultado:
+            <input type="text" value="{{this.total}}">
+
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!questionsForm.valid">
+                Siguiente
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

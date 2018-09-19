@@ -1,0 +1,127 @@
+<div class="container-fluid mb-5" style="margin-top:5%;">
+  <div class="row mt-5" style="margin-bottom:5%;">
+    <div class="offset-md-3 col-md-6">
+      <div class="card">
+        <div class="card-header text-center">
+          <h5>Crear Usuario</h5>
+        </div>
+
+        <div class="card-body" style="padding:30px">
+
+          <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input required type="text" name="nombre" id="nombre" placeholder="Nombre" class="form-control" [(ngModel)]="user.nombre">
+            </div>
+
+            <div class="form-group">
+              <label for="cedula">Cedula</label>
+              <input required type="number" name="cedula" id="cedula" placeholder="Cedula" class="form-control" [(ngModel)]="user.cedula"
+                min="0" step="1">
+            </div>
+
+            <div class="form-group">
+              <label for="sexo">Sexo</label>
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <input type="radio" name="sexo" value="Hombre" [(ngModel)]="user.sexo"> Hombre
+                  <input class="ml-2" type="radio" name="sexo" value="Mujer" [(ngModel)]="user.sexo"> Mujer<br>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="edad">Edad</label>
+              <input class="float-left" required type="number" name="edad" id="edad" placeholder="Edad" class="form-control" [(ngModel)]="user.edad"
+                min="0" step="1">
+            </div>
+
+            <div class="form-group">
+              <label for="fechaNacimiento">Fecha de Nacimiento</label><br>
+              <div class="input-group-text">
+                <input required class="ml-2" type="date" name="fechaNacimiento" [(ngModel)]="user.fechaNacimiento">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Pais de residencia</label>
+                <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="user.pais" name="pais">
+                  <option *ngFor="let pais of userService.paises">
+                    {{pais.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="estadoCivil">Estado Civil</label>
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <input type="radio" name="estadoCivil" value="Soltero" [(ngModel)]="user.estadoCivil"> Soltero
+                  <input class="ml-2" type="radio" name="estadoCivil" value="Casado" [(ngModel)]="user.estadoCivil"> Casado<br>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="profesion">Profesión</label>
+              <input required type="text" name="profesion" id="cedula" placeholder="Profesion" class="form-control" [(ngModel)]="user.profesion">
+            </div>
+
+            <div class="form-group">
+              <label for="tieneTrabajo">¿Actualmente trabaja?</label>
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <input type="radio" name="tieneTrabajo" value="Si" [(ngModel)]="user.tieneTrabajo"> Si
+                  <input class="ml-2" type="radio" name="tieneTrabajo" value="No" [(ngModel)]="user.tieneTrabajo"> No
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="vivePadres">¿Vive con sus padres?</label>
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <input type="radio" name="vivePadres" value="Si" 
+                  [(ngModel)]="user.vivePadres"> Si
+                  <input class="ml-2" type="radio" name="vivePadres" value="No" 
+                  [(ngModel)]="user.vivePadres"> No
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="tieneHermanos">¿Tiene Hermanos?</label>
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <input type="radio" name="tieneHermanos" value="Si" 
+                  [(ngModel)]="user.tieneHermanos" 
+                  (change)="activarInput($event.target.value)"> Si
+                  <input class="ml-2" type="radio" name="tieneHermanos" value="No" 
+                  [(ngModel)]="user.tieneHermanos"
+                  (change)="activarInput($event.target.value)"> No
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="hermanos">Cantidad de hermanos</label>
+              <input required type="number" name="hermanos" id="edad" placeholder="Canidad de hermanos" class="form-control" [(ngModel)]="user.hermanos"
+                min="0" step="1" [disabled]="!inputHijos">
+            </div>
+
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!userForm.valid">
+                Guardar Usuario
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

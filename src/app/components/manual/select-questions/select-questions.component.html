@@ -1,0 +1,49 @@
+<div class="container mb-5">
+
+  <h3 class="mb-3 mt-5 text-center">Bienvenido Usuario</h3>
+
+  <div class="row">
+
+    <div class="offset-md-3 col-md-6">
+      <div class="card border-secondary">
+        <div class="card-header text-center">
+          <h5 class="float-left">Cuestionarios del Sentimiento:</h5>
+          <a class="btn btn-primary float-right" routerLink="questionsSentimiento"
+          *ngIf="!sentimientoService.sentimiento"> Hacer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+
+    <div class="offset-md-3 col-md-6">
+      <div class="card border-secondary">
+        <div class="card-header text-center">
+          <h5 class="float-left">Cuestionarios del Pensamiento:</h5>
+          <a class="btn btn-primary float-right" routerLink="questionsPensamiento/Pensador" 
+          *ngIf="!pensamientoService.pensamiento"> Hacer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="offset-md-3 col-md-6">
+      <div class="card border-secondary">
+        <div class="card-header text-center">
+          <h5 class="float-left">Cuestionarios del Instinto:</h5>
+          <a class="btn btn-primary float-right" routerLink="questionsInstinto"
+          *ngIf="!instintoService.instinto"> Hacer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="offset-md-3 col-md-6 text-center">
+      <button class="btn btn-primary" (click)="mostrarResultado()"> Finalizado </button>
+    </div>
+  </div>
+
+</div>
