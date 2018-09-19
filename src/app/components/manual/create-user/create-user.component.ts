@@ -3,6 +3,7 @@ import { UserService } from '../../../services/user/user.service';
 import { Pais } from '../../../Models/Pais';
 import { User } from '../../../Models/User';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
@@ -29,7 +30,7 @@ export class CreateUserComponent implements OnInit {
     hermanos:null,
   }
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService, private router:Router) { }
 
   ngOnInit() {
     this.refreshPaisesList();
@@ -55,6 +56,7 @@ export class CreateUserComponent implements OnInit {
       console.log("Añadido Correctamente");
       this.userService.selectedUser = form.value;
       console.log(form.value);
+      this.router.navigateByUrl('selectQuestions');
     });
     
   }

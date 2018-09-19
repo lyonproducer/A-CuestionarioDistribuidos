@@ -79,7 +79,7 @@ export class InstintoComponent implements OnInit {
       }
       console.log('El resultado reformador ' + this.total);
       //Termina el for -------------------
-      this.resultado1.cedula = 26691085;
+      this.resultado1.cedula = this.userService.selectedUser.cedula;
       this.resultado1.total = this.total;
       this.resultado1.tipo = 'Reformador';
 
@@ -102,7 +102,7 @@ export class InstintoComponent implements OnInit {
       }
       console.log('El resultado protector ' + this.total);
       //Termina el for -------------------
-      this.resultado2.cedula = 26691085;
+      this.resultado2.cedula = this.userService.selectedUser.cedula;
       this.resultado2.total = this.total;
       this.resultado2.tipo = 'Protector';
       
@@ -125,7 +125,7 @@ export class InstintoComponent implements OnInit {
       }
       console.log('El resultado pacifico ' + this.total);
       //Termina el for -------------------
-      this.resultado3.cedula = 26691085;
+      this.resultado3.cedula = this.userService.selectedUser.cedula;
       this.resultado3.total = this.total;
       this.resultado3.tipo = 'Pacifico';
       
@@ -142,7 +142,7 @@ export class InstintoComponent implements OnInit {
 
   onSave(resultado:Resultado){
     this.instintoService.postResultado(resultado).subscribe((res)=> {
-      console.log("guardado en bdd " + resultado.total);
+      //console.log("guardado en bdd " + resultado.total);
     });
   }
 

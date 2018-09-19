@@ -80,7 +80,7 @@ export class PensamientoComponent implements OnInit {
       }
       console.log('El resultado pensador ' + this.total);
       //Termina el for -------------------
-      this.resultado1.cedula = 26691085;
+      this.resultado1.cedula = this.userService.selectedUser.cedula;
       this.resultado1.total = this.total;
       this.resultado1.tipo = 'Pensador';
 
@@ -103,7 +103,7 @@ export class PensamientoComponent implements OnInit {
       }
       console.log('El resultado leal ' + this.total);
       //Termina el for -------------------
-      this.resultado2.cedula = 26691085;
+      this.resultado2.cedula = this.userService.selectedUser.cedula;
       this.resultado2.total = this.total;
       this.resultado2.tipo = 'Leal';
       
@@ -126,7 +126,7 @@ export class PensamientoComponent implements OnInit {
       }
       console.log('El resultado entusiasta ' + this.total);
       //Termina el for -------------------
-      this.resultado3.cedula = 26691085;
+      this.resultado3.cedula = this.userService.selectedUser.cedula;
       this.resultado3.total = this.total;
       this.resultado3.tipo = 'Entusiasta';
       
@@ -143,7 +143,7 @@ export class PensamientoComponent implements OnInit {
 
   onSave(resultado:Resultado){
     this.pensamientoService.postResultado(resultado).subscribe((res)=> {
-      console.log("guardado en bdd " + resultado.total);
+      //console.log("guardado en bdd " + resultado.total);
     });
   }
 
@@ -151,15 +151,12 @@ export class PensamientoComponent implements OnInit {
 
     if((pensador >= leal) && (pensador >= entusiasta)){
       this.pensamientoService.pensamientoResultado = this.resultado1;
-      console.log("es pensador");
     }else 
     if((leal >= pensador) && (leal >= entusiasta)){
       this.pensamientoService.pensamientoResultado = this.resultado2;
-      console.log("es leal");
     }else 
     if((entusiasta >= leal) && (entusiasta >= pensador)){
       this.pensamientoService.pensamientoResultado = this.resultado3;
-      console.log("es entusiasta");
     }
   }
 }

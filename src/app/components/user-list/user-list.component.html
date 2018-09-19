@@ -1,0 +1,21 @@
+<div class="container mt-5">
+  <h1> Lista de Usuarios Censados </h1>
+
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Cedula</th>
+        <th scope="col">Tipo de personalidad</th>
+        <th scope="col">Puntuacion total</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr *ngFor="let result of userService.resultados">
+        <th scope="row">{{result.cedula}}</th>
+        <td>{{result.tipo}}</td>
+        <td>{{result.total}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

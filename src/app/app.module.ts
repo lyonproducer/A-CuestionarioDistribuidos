@@ -12,10 +12,12 @@ import { SelectQuestionsComponent } from './components/manual/select-questions/s
 import { PensamientoComponent } from './components/manual/questions/pensamiento/pensamiento.component';
 import { SentimientoComponent } from './components/manual/questions/sentimiento/sentimiento.component';
 import { InstintoComponent } from './components/manual/questions/instinto/instinto.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
   {path: 'createUser', component: CreateUserComponent},
+  {path: 'userList', component: UserListComponent},
   {path: 'selectQuestions', component: SelectQuestionsComponent},
   {path: 'selectQuestions/questionsPensamiento/:tipo', component: PensamientoComponent},
   {path: 'selectQuestions/questionsSentimiento', component: SentimientoComponent},
@@ -32,7 +34,8 @@ const routes: Route[] = [
     SelectQuestionsComponent,
     PensamientoComponent,
     SentimientoComponent,
-    InstintoComponent
+    InstintoComponent,
+    UserListComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

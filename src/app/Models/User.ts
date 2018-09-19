@@ -13,5 +13,4 @@ export interface User {
     vivePadres:string;
     tieneHermanos:string;
     hermanos?:string;
-    
 }

@@ -58,32 +58,43 @@ export class SelectQuestionsComponent implements OnInit {
 
   mostrarResultado(){
 
-    if((this.pensamiento.total > this.sentimiento.total) 
-    && (this.pensamiento.total > this.instinto.total)){
+    if((this.pensamiento.total >= this.sentimiento.total) 
+    && (this.pensamiento.total >= this.instinto.total)){
       alert("el resultado es: " + this.pensamiento.tipo);
-      //this.router.navigateByUrl('');
-      //this.guardarTipoFinal(this.pensamiento);
+      this.router.navigateByUrl('userList');
+      this.guardarTipoFinal(this.pensamiento);
     }else
 
-    if((this.sentimiento.total > this.pensamiento.total)
-    &&(this.sentimiento.total > this.instinto.total)){
+    if((this.sentimiento.total >= this.pensamiento.total)
+    &&(this.sentimiento.total >= this.instinto.total)){
       alert("el resultado es: " + this.sentimiento.tipo);
-      //this.router.navigateByUrl('');
-      //this.guardarTipoFinal(this.sentimiento);
+      this.router.navigateByUrl('userList');
+      this.guardarTipoFinal(this.sentimiento);
     }
     else
-    if((this.instinto.total > this.pensamiento.total)
-    &&(this.instinto.total > this.sentimiento.total)){
+    if((this.instinto.total >= this.pensamiento.total)
+    &&(this.instinto.total >= this.sentimiento.total)){
       alert("el resultado es: " + this.instinto.tipo);
-      //this.router.navigateByUrl('');
-      //this.guardarTipoFinal(this.sentimiento);
+      this.router.navigateByUrl('userList');
+      this.guardarTipoFinal(this.instinto);
     }
     else
     alert("Realiza cualquier pregunta");
+
+    this.refreshResultadosList();
+    this.instintoService.instinto = false;
+    this.sentimientoService.sentimiento = false;
+    this.pensamientoService.pensamiento = false;
 
   }
 
   guardarTipoFinal(resultado:Resultado){
     this.userService.postRespuesta(resultado).subscribe();
+  }
+
+  refreshResultadosList() {
+    this.userService.getUserResultados().subscribe((res) => {
+      this.userService.resultados = res as Resultado[];
+    });
   }
 }

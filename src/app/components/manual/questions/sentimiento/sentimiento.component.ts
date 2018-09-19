@@ -79,7 +79,7 @@ export class SentimientoComponent implements OnInit {
       }
       console.log('El resultado ayudador ' + this.total);
       //Termina el for -------------------
-      this.resultado1.cedula = 26691085;
+      this.resultado1.cedula = this.userService.selectedUser.cedula;
       this.resultado1.total = this.total;
       this.resultado1.tipo = 'Ayudador';
 
@@ -102,7 +102,7 @@ export class SentimientoComponent implements OnInit {
       }
       console.log('El resultado triunfador ' + this.total);
       //Termina el for -------------------
-      this.resultado2.cedula = 26691085;
+      this.resultado2.cedula = this.userService.selectedUser.cedula;
       this.resultado2.total = this.total;
       this.resultado2.tipo = 'Triunfador';
       
@@ -125,7 +125,7 @@ export class SentimientoComponent implements OnInit {
       }
       console.log('El resultado Artista ' + this.total);
       //Termina el for -------------------
-      this.resultado3.cedula = 26691085;
+      this.resultado3.cedula = this.userService.selectedUser.cedula;
       this.resultado3.total = this.total;
       this.resultado3.tipo = 'Artista';
       
@@ -142,7 +142,7 @@ export class SentimientoComponent implements OnInit {
 
   onSave(resultado:Resultado){
     this.sentimientoService.postResultado(resultado).subscribe((res)=> {
-      console.log("guardado en bdd " + resultado.total);
+      //console.log("guardado en bdd " + resultado.total);
     });
   }
 
