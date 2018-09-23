@@ -35,4 +35,8 @@ export class UserService {
   postSimulacion(cantidad : number){
     return this.http.post(`http://127.0.0.1:8000/api/generateUsers/` + `${cantidad}`, cantidad);
   }
+
+  postCubo(cantidad: number){
+    return this.http.post(`http://127.0.0.1:8000/api/generateCubeDB`, cantidad);
+  }
 }
