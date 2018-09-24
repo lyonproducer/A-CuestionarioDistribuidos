@@ -4,6 +4,7 @@ import { Pais } from '../../../Models/Pais';
 import { User } from '../../../Models/User';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-create-user',
@@ -30,7 +31,8 @@ export class CreateUserComponent implements OnInit {
     hermanos:null,
   }
 
-  constructor(private userService:UserService, private router:Router) { }
+  constructor(private userService:UserService, private router:Router, 
+    private snotify:SnotifyService ) { }
 
   ngOnInit() {
     this.refreshPaisesList();
@@ -57,6 +59,7 @@ export class CreateUserComponent implements OnInit {
       this.userService.selectedUser = form.value;
       console.log(form.value);
       this.router.navigateByUrl('selectQuestions');
+      this.snotify.success('Usuario creado con exito',{timeout:0});
     });
     
   }

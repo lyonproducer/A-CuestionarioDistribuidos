@@ -1,0 +1,41 @@
+<div class="container" style="margin-top:20%;">
+
+  <div class="row">
+
+    <div class="offset-md-4 col-md-4">
+
+      <div class="card border-secondary">
+
+        <div class="card-header text-center">Cantidad de usuarios</div>
+
+        <div class="card-body">
+
+          <form #simulationForm="ngForm" (ngSubmit)="onSubmit(simulationForm)">
+
+            <div class="form-group">
+              <input required type="number" name="cantidad" id="cantidad" placeholder="Cantidad a generar" class="form-control"
+                [(ngModel)]="cantidad">
+            </div>
+
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-primary mt-2" [disabled]="!simulationForm.valid">
+                Simulación
+              </button>
+            </div>
+            
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#fff" type="ball-clip-rotate-multiple">
+      <p style="font-size: 20px; color: white">Loading...</p>
+  </ngx-spinner>
+
+</div>

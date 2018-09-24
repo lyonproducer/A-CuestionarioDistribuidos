@@ -1,7 +1,8 @@
 <div class="container mt-5">
-  <h1> Lista de Usuarios Censados </h1>
+  <h1 class="float-left"> Lista de Usuarios Censados </h1>
+  <button class="btn btn-primary float-right" (click)="SaveData()">Guardar en el cubo</button>
 
-  <table class="table table-dark">
+  <table class="table table-dark mb-5">
     <thead>
       <tr>
         <th scope="col">Cedula</th>
@@ -10,12 +11,19 @@
       </tr>
     </thead>
     <tbody>
-      
-      <tr *ngFor="let result of userService.resultados">
+
+      <tr *ngFor="let result of userService.resultados | paginate: { itemsPerPage: 10, currentPage: p }">
         <th scope="row">{{result.cedula}}</th>
         <td>{{result.tipo}}</td>
         <td>{{result.total}}</td>
       </tr>
     </tbody>
   </table>
+
+  <pagination-controls class="text-center" (pageChange)="p = $event"></pagination-controls>
+  
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#fff" type="ball-clip-rotate-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+  </ngx-spinner>
+
 </div>
