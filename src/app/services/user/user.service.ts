@@ -39,4 +39,8 @@ export class UserService {
   postCubo(cantidad: number){
     return this.http.post(`http://127.0.0.1:8000/api/generateCubeDB`, cantidad);
   }
+
+  eraseData(cantidad: number){
+    return this.http.post(`http://127.0.0.1:8000/api/deleteUsers`, cantidad);
+  }
 }

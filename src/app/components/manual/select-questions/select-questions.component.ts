@@ -15,19 +15,19 @@ export class SelectQuestionsComponent implements OnInit {
 
   sentimiento:Resultado={
     tipo:null,
-    total:0,
+    total:null,
     cedula:null
   };
 
   pensamiento:Resultado={
     tipo:null,
-    total:0,
+    total:null,
     cedula:null
   };
 
   instinto:Resultado={
     tipo:null,
-    total:0,
+    total:null,
     cedula:null
   };
 
@@ -53,11 +53,18 @@ export class SelectQuestionsComponent implements OnInit {
       this.instinto = this.instintoService.instintoResultado;
     }
     
+    console.log(this.sentimiento);
+    console.log(this.pensamiento);
+    console.log(this.instinto);
 
   }
 
   mostrarResultado(){
 
+    if(!this.sentimiento.total && !this.pensamiento.total && !this.instinto.total){
+      alert("Realiza cualquier pregunta");
+    }else 
+    
     if((this.pensamiento.total >= this.sentimiento.total) 
     && (this.pensamiento.total >= this.instinto.total)){
       alert("el resultado es: " + this.pensamiento.tipo);
@@ -78,8 +85,8 @@ export class SelectQuestionsComponent implements OnInit {
       this.router.navigateByUrl('userList');
       this.guardarTipoFinal(this.instinto);
     }
-    else
-    alert("Realiza cualquier pregunta");
+
+
 
     this.refreshResultadosList();
     this.instintoService.instinto = false;

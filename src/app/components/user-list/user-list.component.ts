@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  SaveData(){
+  saveData(){
     let a;
     this.spinner.show();
     this.userService.postCubo(a).subscribe(
@@ -36,6 +36,28 @@ export class UserListComponent implements OnInit {
         this.snotify.success(
           'Guardados datos con exito',{timeout:0}
         );
+      });
+  }
+
+  eraseData(){
+    let a;
+    this.spinner.show();
+    this.userService.eraseData(a).subscribe(
+      data=>{
+        
+        if(data == false){
+          this.snotify.error(
+            'No hay datos para eliminar',{timeout:0}
+          );
+        }else{
+          this.refreshResultadosList();
+          this.snotify.success(
+            'Datos eliminados con exito',{timeout:0}
+          );
+        }
+
+        this.spinner.hide();
+
       });
   }
 
