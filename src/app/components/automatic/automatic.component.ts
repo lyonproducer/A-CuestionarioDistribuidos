@@ -22,7 +22,6 @@ export class AutomaticComponent implements OnInit {
   onSubmit(form:NgForm){
 
     this.spinner.show();
-    console.log("hola");
     console.log(form.value);
     this.userService.postSimulacion(form.value.cantidad).subscribe( 
       data => {
@@ -30,6 +29,9 @@ export class AutomaticComponent implements OnInit {
         this.spinner.hide();
         this.router.navigateByUrl('userList');
         this.snotify.success('Datos generados con exito',{timeout:0});
+      },
+      error => {
+        this.snotify.error('Hubo un error!',{timeout:0});
       });
   }
 
